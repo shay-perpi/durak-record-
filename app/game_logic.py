@@ -2,15 +2,10 @@ from collections import Counter
 
 def determine_round_loser(losses, players):
     """
-    Determine the round loser based on the losses.
-    Arguments:
-        losses (dict): Dictionary of players and their loss counts.
-        players (list): List of all active players.
-    Returns:
-        str: The name of the round loser.
+    Identify the player with 5 losses in a round.
     """
     for player in players:
-        if losses.get(player, 0) >= 5:
+        if losses[player] >= 5:
             return player
     return None
 
@@ -29,10 +24,7 @@ def determine_evening_loser(round_losers):
 
 def reset_losses(players):
     """
-    Reset loss counts for all players at the end of a round or evening.
-    Arguments:
-        players (list): List of player names.
-    Returns:
-        dict: A reset dictionary with players' loss counts set to 0.
+    Reset all players' loss counts for a new game.
     """
     return {player: 0 for player in players}
+
